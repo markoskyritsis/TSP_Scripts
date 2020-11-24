@@ -1,5 +1,5 @@
 # TSP_Scripts
-Some scripts for extracting geometric properties of Graphs using R. For example:
+Some scripts for extracting geometric properties of Travelling Salesperson Graphs using R. For example:
 
 Find intersections:
 The script helps detect intersections in TSP solutions. By setting a parameter to true, the script will highlight them as well. Either way it returns a list of intersection points.

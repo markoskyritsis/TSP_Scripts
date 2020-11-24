@@ -1,5 +1,7 @@
 library(matlib)
 library(dplyr) #For efficient check if values in range
+randomX <- 0
+randomY <- 0
 
 
 findSlopeIntercept <- function(x1,x2,y1,y2) {
@@ -172,10 +174,13 @@ monteCarlo <- function(df, no) {
 
 df <- read.csv("Example_Graph.csv", header = T)
 df$X <- NULL
+plot(df$x, df$y)
+lines(df$x, df$y)
 
 #Let's check the ratio between the irregular polygon and the total area. 
 #The graph is in arbitrary units, so the area doesn't really matter, but if
 #it was in e.g., cm, we could just multiply the ratio by the cm^2 in the end
 #to get a really good approximation of the area of the polygon in cm^2
 
-monteCarlo(df, 100)
+monteCarlo(df, 10000)
+

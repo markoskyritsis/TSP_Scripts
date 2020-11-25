@@ -47,6 +47,11 @@ findIntersections <- function(x1,x2,y1,y2,x3,x4,y3,y4) {
     return(c(y,x))
   }
   else {
+    #Horizontal lines (Asymptotes, just return 0,0)
+    if (m1 == 0 & m2 == 0) {
+      return(c(0,0))
+    }
+    else {
     #Use matlib library to find the intersection (system of two equations)
     A <- matrix(c(1,1,-m1,-m2),2,2)
     b <- c(c1,c2)
@@ -58,6 +63,7 @@ findIntersections <- function(x1,x2,y1,y2,x3,x4,y3,y4) {
     intersect <- c(echelon(A,b)[1,3],echelon(A,b)[2,3])
     #print(intersect)
     return(intersect)
+    }
   }
 }
 
@@ -104,7 +110,7 @@ findPointIntersections <- function(df,pointX,pointY, output = T) {
     x <- intersect[2]
     if (checkWithinInterval(x,y,df$x[i],df$x[(i+1)],df$y[i],df$y[(i+1)]) == TRUE) {
       countit <- FALSE
-      if (randomX <= 2500) {
+      if (rx <= 2500) {
         if (x < rx) {
           countit <- TRUE
         }
@@ -182,5 +188,5 @@ lines(df$x, df$y)
 #it was in e.g., cm, we could just multiply the ratio by the cm^2 in the end
 #to get a really good approximation of the area of the polygon in cm^2
 
-monteCarlo(df, 10000)
+monteCarlo(df, 5000)
 
